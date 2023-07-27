@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>beginning</title>
+</head>
+<body>
+    <h1 id="btn">press me</h1>
+    <ul id="list">
+
+    </ul>
+<script>
+  document.getElementById('btn').addEventListener('mouseenter',function(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => displayUsers(json))
+
+      function displayUsers(users) {
+       const name = users.map(user => user.name);
+        for (let id = 0; id < name.length; id++) {
+            const element = name[id];
+           const li = document.createElement('li');
+           li.innerText = element;
+           document.getElementById('list').appendChild(li);
+            
+        }
+      }
+
+  })
+</script>
+
+
+
+</body>
+</html>
